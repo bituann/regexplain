@@ -13,7 +13,7 @@ public class RegExPlainService {
 
     public String generateResponse(String regex) {
         return chatClient
-                .prompt("Give me a simple explanation of the type of string matched by this regex pattern: %s".formatted(regex))
+                .prompt("Give me a simple explanation of the type of string matched by this regex pattern: %s. No validating statements from you. Just straight to the point".formatted(regex))
                 .call()
                 .content();
     }
