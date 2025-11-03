@@ -23,7 +23,17 @@ public class RegExPlainController {
     @PostMapping("/explain")
     public ResponseEntity<A2AResponse> explainRegex (@RequestBody A2ARequest request) {
         String regexRequest = request.getParams().getMessage().getParts().get(0).getText();
-        String responseText = regexplainService.generateResponse(regexRequest);
+
+        String responseText;
+
+        // return error 500 if call to service fails
+        try {
+            responseText = regexplainService.generateResponse(regexRequest);
+        } catch (Exception e) {
+            CustomError error = new CustomError(-32603, "Internal Error", Map.of("details", e.getMessage()));
+            A2AResponse errorResponse = new A2AResponse(null, null,  error);
+            return ResponseEntity.internalServerError().body(errorResponse);
+        }
 
         // response building
         A2AResponse response = new A2AResponse();
