@@ -22,7 +22,7 @@ public class RegExPlainController {
         this.regexplainService = regexplainService;
     }
 
-    @GetMapping("/.well-known/agent.json")
+    @GetMapping("/api/.well-known/agent.json")
     public ResponseEntity<AgentCard> getAgentCard () {
         AgentCard agentCard = new AgentCard();
         agentCard.setName("Regexplain");
@@ -39,7 +39,7 @@ public class RegExPlainController {
         return ResponseEntity.ok(agentCard);
     }
 
-    @PostMapping("/explain")
+    @PostMapping("/api")
     public ResponseEntity<A2AResponse> explainRegex (@RequestBody A2ARequest request) {
         String regexRequest;
         String responseText;
