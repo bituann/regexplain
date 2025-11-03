@@ -6,11 +6,11 @@ public class Result {
     private String id;
     private String contextId;
     private TaskStatus status;
-    private Artifact artifacts;
+    private List<Artifact> artifacts;
     private List<HistoryMessage> history;
     private String kind;
 
-    public Result(String id, String contextId, TaskStatus status, Artifact artifacts, List<HistoryMessage> history) {
+    public Result(String id, String contextId, TaskStatus status, List<Artifact> artifacts, List<HistoryMessage> history) {
         this.id = id;
         this.contextId = contextId;
         this.status = status;
@@ -43,11 +43,11 @@ public class Result {
         this.status = status;
     }
 
-    public Artifact getArtifacts() {
+    public List<Artifact> getArtifacts() {
         return artifacts;
     }
 
-    public void setArtifacts(Artifact artifacts) {
+    public void setArtifacts(List<Artifact> artifacts) {
         this.artifacts = artifacts;
     }
 
