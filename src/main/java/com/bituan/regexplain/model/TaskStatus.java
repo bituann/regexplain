@@ -7,6 +7,8 @@ public class TaskStatus {
     private Instant timestamp;
     private HistoryMessage message;
 
+    public TaskStatus() {}
+
     public TaskStatus(String state, Instant timestamp, HistoryMessage message) {
         this.state = state;
         this.timestamp = timestamp;
