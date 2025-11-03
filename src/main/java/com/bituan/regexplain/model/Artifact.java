@@ -6,9 +6,11 @@ import java.util.Map;
 public class Artifact {
     private String artifactId;
     private String name;
-    private List<Map<String, Object>> parts; // come back to review that type
+    private List<MessagePart> parts; // come back to review that type
 
-    public Artifact(String artifactId, String name, List<Map<String, Object>> parts) {
+    public Artifact() {}
+
+    public Artifact(String artifactId, String name, List<MessagePart> parts) {
         this.artifactId = artifactId;
         this.name = name;
         this.parts = parts;
@@ -30,11 +32,11 @@ public class Artifact {
         this.name = name;
     }
 
-    public List<Map<String, Object>> getParts() {
+    public List<MessagePart> getParts() {
         return parts;
     }
 
-    public void setParts(List<Map<String, Object>> parts) {
+    public void setParts(List<MessagePart> parts) {
         this.parts = parts;
     }
 }
