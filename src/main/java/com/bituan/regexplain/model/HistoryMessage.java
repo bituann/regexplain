@@ -1,8 +1,10 @@
 package com.bituan.regexplain.model;
 
-import java.util.List;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class HistoryMessage {
     private String kind;
     private String role;
@@ -10,7 +12,7 @@ public class HistoryMessage {
     private String messageId;
     private String taskId;
 
-
+    public HistoryMessage() {}
 
     public HistoryMessage(String role, List<MessagePart> parts, String messageId, String taskId) {
         this.kind = "message";
