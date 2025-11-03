@@ -6,6 +6,10 @@ public class A2AResponse {
     private Result result;
     private CustomError error;
 
+    public A2AResponse() {
+        this.jsonrpc = "2.0";
+    }
+
     public A2AResponse(String id, Result result, CustomError error) {
         this.jsonrpc = "2.0";
         this.id = id;
