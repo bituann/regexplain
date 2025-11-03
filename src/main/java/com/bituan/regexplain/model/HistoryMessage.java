@@ -6,11 +6,13 @@ import java.util.Map;
 public class HistoryMessage {
     private String kind;
     private String role;
-    private List<Map<String, Object>> parts;
+    private List<MessagePart> parts;
     private String messageId;
     private String taskId;
 
-    public HistoryMessage(String role, List<Map<String, Object>> parts, String messageId, String taskId) {
+
+
+    public HistoryMessage(String role, List<MessagePart> parts, String messageId, String taskId) {
         this.kind = "message";
         this.role = role;
         this.parts = parts;
@@ -34,11 +36,11 @@ public class HistoryMessage {
         this.role = role;
     }
 
-    public List<Map<String, Object>> getParts() {
+    public List<MessagePart> getParts() {
         return parts;
     }
 
-    public void setParts(List<Map<String, Object>> parts) {
+    public void setParts(List<MessagePart> parts) {
         this.parts = parts;
     }
 
