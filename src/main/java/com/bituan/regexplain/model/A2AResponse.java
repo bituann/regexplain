@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class A2AResponse {
     private final String jsonrpc;
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private String id;
     private Result result;
     private CustomError error;
