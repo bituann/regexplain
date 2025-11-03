@@ -1,6 +1,6 @@
 package com.bituan.regexplain.model;
 
-class RequestParamsProperty {
+public class RequestParamsProperty {
     private HistoryMessage message;
     private String messageId;
 
