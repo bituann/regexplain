@@ -11,9 +11,9 @@ public class RegExPlainService {
         this.chatClient = chatClientBuilder.build();
     }
 
-    String generateResponse() {
+    public String generateResponse(String regex) {
         return chatClient
-                .prompt("Give me a simple explanation of the type of string matched by this regex pattern: {[a-z]}")
+                .prompt("Give me a simple explanation of the type of string matched by this regex pattern: %s".formatted(regex))
                 .call()
                 .content();
     }
