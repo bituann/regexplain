@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Instant;
 import java.util.*;
 
-@RestController
+@RestController("/a2a/agent/regexplain")
 public class RegExPlainController {
     private final RegExPlainService regexplainService;
 
@@ -22,7 +22,7 @@ public class RegExPlainController {
         this.regexplainService = regexplainService;
     }
 
-    @GetMapping("/api/.well-known/agent.json")
+    @GetMapping("/.well-known/agent.json")
     public ResponseEntity<AgentCard> getAgentCard () {
         AgentCard agentCard = new AgentCard();
         agentCard.setName("regexplain");
@@ -39,7 +39,7 @@ public class RegExPlainController {
         return ResponseEntity.ok(agentCard);
     }
 
-    @PostMapping("/api")
+    @PostMapping("/")
     public ResponseEntity<A2AResponse> explainRegex (@RequestBody A2ARequest request) {
         String regexRequest;
         String responseText;
