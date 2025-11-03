@@ -10,13 +10,15 @@ public class Result {
     private List<HistoryMessage> history;
     private String kind;
 
-    public Result(String id, String contextId, TaskStatus status, List<Artifact> artifacts, List<HistoryMessage> history) {
+    public Result() {}
+
+    public Result(String id, String contextId, TaskStatus status, List<Artifact> artifacts, List<HistoryMessage> history, String task) {
         this.id = id;
         this.contextId = contextId;
         this.status = status;
         this.artifacts = artifacts;
         this.history = history;
-        this.kind = "task";
+        this.kind = task;
     }
 
     public String getId() {
