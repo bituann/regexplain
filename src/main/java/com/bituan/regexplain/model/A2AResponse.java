@@ -1,5 +1,8 @@
 package com.bituan.regexplain.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class A2AResponse {
     private final String jsonrpc;
     private String id;
