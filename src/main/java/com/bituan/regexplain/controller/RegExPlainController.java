@@ -90,7 +90,6 @@ public class RegExPlainController {
         // response building contd
         response.setResult(result);
 
-
         return ResponseEntity.ok(response);
     }
 }
