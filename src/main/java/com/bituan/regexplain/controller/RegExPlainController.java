@@ -5,6 +5,7 @@ import com.bituan.regexplain.service.RegExPlainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,23 @@ public class RegExPlainController {
     @Autowired
     RegExPlainController (RegExPlainService regexplainService) {
         this.regexplainService = regexplainService;
+    }
+
+    @GetMapping("/.well-known/agent.json")
+    public ResponseEntity<AgentCard> getAgentCard () {
+        AgentCard agentCard = new AgentCard();
+        agentCard.setName("Regexplain");
+        agentCard.setDescription("An agent that provides a simple explanation of the type of string a regex pattern matches");
+        agentCard.setUrl("regexplain-production.up.railway.app");
+        agentCard.setProvider("Bituan", null);
+        agentCard.setVersion("1.0");
+        agentCard.setCapabilities(false, false, false);
+        agentCard.setDefaultInputModes(List.of("text/plain"));
+        agentCard.setDefaultOutputModes(List.of("application/json", "text/plain"));
+        agentCard.setSkill("skill-001", "Explain Regex", "Provides a simple explanation of the type of string a regex pattern matches",
+                List.of("text/plain"), List.of("text/plain"), List.of());
+
+        return ResponseEntity.ok(agentCard);
     }
 
     @PostMapping("/explain")
