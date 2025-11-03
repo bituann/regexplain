@@ -25,9 +25,9 @@ public class RegExPlainController {
     @GetMapping("/api/.well-known/agent.json")
     public ResponseEntity<AgentCard> getAgentCard () {
         AgentCard agentCard = new AgentCard();
-        agentCard.setName("Regexplain");
+        agentCard.setName("regexplain");
         agentCard.setDescription("An agent that provides a simple explanation of the type of string a regex pattern matches");
-        agentCard.setUrl("regexplain-production.up.railway.app");
+        agentCard.setUrl("regexplain-production.up.railway.app/api");
         agentCard.setProvider("Bituan", null);
         agentCard.setVersion("1.0");
         agentCard.setCapabilities(false, false, false);
