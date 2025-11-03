@@ -3,6 +3,7 @@ package com.bituan.regexplain.controller;
 import com.bituan.regexplain.model.*;
 import com.bituan.regexplain.service.RegExPlainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +23,17 @@ public class RegExPlainController {
 
     @PostMapping("/explain")
     public ResponseEntity<A2AResponse> explainRegex (@RequestBody A2ARequest request) {
-        String regexRequest = request.getParams().getMessage().getParts().get(0).getText();
-
+        String regexRequest;
         String responseText;
+
+        // return 403 if parameter is invalid
+        try {
+            regexRequest = request.getParams().getMessage().getParts().get(0).getText();
+        } catch (Exception e) {
+            CustomError error = new CustomError(-32603, "Invalid Parameter", Map.of("details", e.getMessage()));
+            A2AResponse errorResponse = new A2AResponse(null, null,  error);
+            return ResponseEntity.status(HttpStatusCode.valueOf(403)).body(errorResponse);
+        }
 
         // return error 500 if call to service fails
         try {
