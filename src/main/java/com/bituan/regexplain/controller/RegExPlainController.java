@@ -86,6 +86,15 @@ public class RegExPlainController {
         // response building -> result building -> status building contd
         status.setMessage(message);
 
+        // response building -> result building -> artifact building
+        List<Artifact> artifacts = new ArrayList<>();
+        Artifact artifact = new Artifact();
+        artifact.setArtifactId(UUID.randomUUID().toString());
+        artifact.setName("regexplainerResponse");
+        artifact.setParts(List.of(new MessagePart("text", responseText, null)));
+        artifacts.add(artifact);
+
+
         //response building -> result building -> history building
         List<MessagePart> messageParts = request.getParams().getMessage().getParts().get(1).getData();
         List<HistoryMessage> history = new ArrayList<>();
@@ -102,7 +111,7 @@ public class RegExPlainController {
 
         //response building -> result building contd
         result.setStatus(status);
-        result.setArtifacts(new ArrayList<>());
+        result.setArtifacts(artifacts);
         result.setHistory(history);
 
         // response building contd
