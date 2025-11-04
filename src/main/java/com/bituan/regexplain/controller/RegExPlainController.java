@@ -48,18 +48,18 @@ public class RegExPlainController {
         try {
             regexRequest = request.getParams().getMessage().getParts().get(0).getText();
         } catch (Exception e) {
-            CustomError error = new CustomError(-32603, "Invalid Parameter", Map.of("details", e.getMessage()));
+            CustomError error = new CustomError(403, "Invalid Parameter", Map.of("details", e.getMessage()));
             A2AResponse errorResponse = new A2AResponse(null, null,  error);
-            return ResponseEntity.status(HttpStatusCode.valueOf(403)).body(errorResponse);
+            return ResponseEntity.ok(errorResponse);
         }
 
         // return error 500 if call to service fails
         try {
             responseText = regexplainService.generateResponse(regexRequest);
         } catch (Exception e) {
-            CustomError error = new CustomError(-32603, "Internal Error", Map.of("details", e.getMessage()));
+            CustomError error = new CustomError(500, "Internal Error", Map.of("details", e.getMessage()));
             A2AResponse errorResponse = new A2AResponse(null, null,  error);
-            return ResponseEntity.internalServerError().body(errorResponse);
+            return ResponseEntity.ok(errorResponse);
         }
 
         // response building
