@@ -82,6 +82,7 @@ public class RegExPlainController {
         message.setRole("agent");
         message.setParts(List.of(new MessagePart("text", responseText, null)));
         message.setKind("message");
+        message.setMessageId(UUID.randomUUID().toString());
 
         // response building -> result building -> status building contd
         status.setMessage(message);
