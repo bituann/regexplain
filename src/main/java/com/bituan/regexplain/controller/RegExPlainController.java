@@ -97,18 +97,18 @@ public class RegExPlainController {
 
 
         //response building -> result building -> history building
-        List<MessagePart> messageParts = request.getParams().getMessage().getParts().get(1).getData();
         List<HistoryMessage> history = new ArrayList<>();
+//        List<MessagePart> messageParts = request.getParams().getMessage().getParts().get(1).getData();
 
-        for (MessagePart messagePart : messageParts) {
-            HistoryMessage historyMessage = new HistoryMessage(request.getParams().getMessage().getRole(), List.of(messagePart),
-                    UUID.randomUUID().toString(), UUID.randomUUID().toString());
-
-            history.add(historyMessage);
-        }
-        HistoryMessage historyMessage = new HistoryMessage("agent", List.of(new MessagePart("text", responseText, null)),
-                UUID.randomUUID().toString(), UUID.randomUUID().toString());
-        history.add(historyMessage);
+//        for (MessagePart messagePart : messageParts) {
+//            HistoryMessage historyMessage = new HistoryMessage(request.getParams().getMessage().getRole(), List.of(messagePart),
+//                    UUID.randomUUID().toString(), UUID.randomUUID().toString());
+//
+//            history.add(historyMessage);
+//        }
+//        HistoryMessage historyMessage = new HistoryMessage("agent", List.of(new MessagePart("text", responseText, null)),
+//                UUID.randomUUID().toString(), UUID.randomUUID().toString());
+//        history.add(historyMessage);
 
         //response building -> result building contd
         result.setStatus(status);
