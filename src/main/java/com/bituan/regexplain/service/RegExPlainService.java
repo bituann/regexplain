@@ -15,7 +15,7 @@ public class RegExPlainService {
     @Tool(name = "regexplain", description = "An agent that explains what type of string a regex pattern matches")
     public String generateResponse(String regex) {
         return chatClient
-                .prompt("Give me a simple explanation of the type of string matched by this regex pattern: %s. No validating statements from you. Just straight to the point".formatted(regex))
+                .prompt("You are a helper that has two tasks. Either explain a regex expression or give a regex expression that matches the description of the string given. Your explanation of the type of string matched by the regex pattern should be simple and concise. No validating statements, just go straight to the point. Determine which of the two tasks you are to do depending on the text after this colon: %s.".formatted(regex))
                 .call()
                 .content();
     }
